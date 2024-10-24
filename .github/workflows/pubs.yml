@@ -4,16 +4,16 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 jobs:
-  build:
+  query_ads:
     runs-on: ubuntu-latest
     env: 
       ADS_TOKEN: ${{ secrets.ADS_KEY }}
     steps:
     - uses: actions/checkout@v3
-    - name: Run a one-line script
+    - name: Query ADS
       run: ./update_bib.py
     - name: switching from HTTPS to SSH
-      run: git remote set-url --add origin ${{ secrets.ssh }}
+      run: git remote set-url --add origin ${{ secrets.SSH }}
     - name: check for changes
       run: git status
     - name: stage changed files
