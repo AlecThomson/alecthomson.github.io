@@ -19,7 +19,12 @@ def main():
     )
 
     # format the response in a nicely readable format
-    bibcodes = [x["bibcode"] for x in results.json()["response"]["docs"]]
+    results_json = results.json()
+    response = results_json.get("response", None)
+    if response is None:
+        print(f"{results_json=}")
+        raise ValueError("No response in the API call")
+    bibcodes = [x["bibcode"] for x in response["docs"]]
 
     # create a dictionary with the payload values
     payload = {"bibcode": bibcodes}

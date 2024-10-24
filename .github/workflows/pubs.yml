@@ -2,6 +2,7 @@ name: Update publications
 on:
   schedule:
     - cron: "0 * * * *"
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run a one-line script
-      run: python3 ./update_bib.py
+      run: ./update_bib.py
     - name: switching from HTTPS to SSH
       run: git remote set-url origin ${{ secrets.ssh }}
     - name: check for changes
