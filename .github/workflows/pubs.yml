@@ -5,10 +5,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env: 
+      ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
     steps:
     - uses: actions/checkout@v3
     - name: Run a one-line script
-      run: python ./update_bib.py
+      run: python3 ./update_bib.py
     - name: switching from HTTPS to SSH
       run: git remote set-url origin ${{ secrets.ssh }}
     - name: check for changes
