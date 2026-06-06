@@ -9,8 +9,15 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Alec Thomson</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,
-      user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Preconnect to external font origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Non-blocking font load -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap"></noscript>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
   </head>
@@ -18,29 +25,35 @@
     <!-- Wrapper-->
     <div id="wrapper">
       <!-- Nav -->
-      <nav id="nav"> <a href="#" class="icon solid fa-home"><span>Home</span></a>
+      <nav id="nav">
+        <a href="#" class="icon solid fa-home"><span>Home</span></a>
         <a href="#research" class="icon solid fa-folder"><span>Research</span></a>
-        <!--<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>-->
-        <a href="https://github.com/alecthomson" class="icon brands fa-github"><span>Github</span></a> 
-        <a href="https://www.linkedin.com/in/alec-thomson" class="icon brands fa-linkedin"><span>Linkedin</span></a> 
-    </nav>
+        <a href="https://github.com/alecthomson" class="icon brands fa-github"><span>Github</span></a>
+        <a href="https://www.linkedin.com/in/alec-thomson" class="icon brands fa-linkedin"><span>Linkedin</span></a>
+      </nav>
       <!-- Main -->
       <div id="main">
         <!-- Me -->
         <article id="home" class="panel intro">
           <header>
-            <h1>Alec Thomson<br>
-            </h1>
-            <p>Radio astronomer. SKA-Low Commissioning Scientist at <a href="https://www.skao.int/">SKAO</a><br>
-            </p>
-              <div itemscope itemtype="https://schema.org/Person"><a itemprop="sameAs" content="https://orcid.org/0000-0001-9472-041X" href="https://orcid.org/0000-0001-9472-041X" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">https://orcid.org/0000-0001-9472-041X</a></div>
-              Email: <a href="mailto:alec.thomson@skao.int">alec.thomson@skao.int</a><br>
+            <h1>Alec Thomson</h1>
+            <p>Radio astronomer. SKA-Low Commissioning Scientist at <a href="https://www.skao.int/">SKAO</a></p>
+            <div itemscope itemtype="https://schema.org/Person">
+              <a itemprop="sameAs" content="https://orcid.org/0000-0001-9472-041X" href="https://orcid.org/0000-0001-9472-041X" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='128' fill='%23A6CE39'/%3E%3Cpath d='M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.5 10.1 10.1z' fill='%23fff'/%3E%3C/svg%3E" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">
+                https://orcid.org/0000-0001-9472-041X
+              </a>
+            </div>
+            Email: <a href="mailto:alec.thomson@skao.int">alec.thomson@skao.int</a>
           </header>
-            <a href="#research" class="jumplink pic"> 
-                <span class="arrow icon solid fa-chevron-right"><span>See my research</span></span>
-                <img src="images/me.jpg" alt=""/> 
-            </a> 
-          </article>
+          <a href="#research" class="jumplink pic">
+            <span class="arrow icon solid fa-chevron-right"><span>See my research</span></span>
+            <picture>
+              <source srcset="images/me.webp" type="image/webp">
+              <img src="images/me.jpg" alt="Alec Thomson">
+            </picture>
+          </a>
+        </article>
         <!-- Research -->
         <article id="research" class="panel">
           <header>
@@ -50,58 +63,27 @@
             galaxies. Currently, I am working with the latest polarization surveys
             in order to better understand the interactions between
             Galactic magnetic fields and structures within the Milky
-            May. <br>
+            Way.
           </p>
           <p>I completed my PhD at the Australian National University,
             supervised by Prof. Naomi McClure-Griffiths, A/Prof.
-            Christoph Federrath, and Prof. John Dickey.<br>
+            Christoph Federrath, and Prof. John Dickey.
           </p>
           <h3>Publications</h3>
-          <script src="https://bibbase.org/show?bib=alecthomson.github.io%2Fpublications.bib&commas=true&jsonp=1"></script>
-	  <p><br>
-          </p>
+          <div id="bibbase-publications"></div>
           <section>
-            <div class="row"> </div>
+            <div class="row"></div>
           </section>
         </article>
-        
-        <!-- Contact -->
-          <!--
-        <article id="contact" class="panel">
-          <header>
-            <h2>Contact Me</h2>
-          </header>
-          <form action="alec.thomson@anu.edu.au" method="post">
-            <div>
-              <div class="row">
-                <div class="col-6 col-12-medium"> <input name="name"
-                    placeholder="Name" type="text"> </div>
-                <div class="col-6 col-12-medium"> <input name="email"
-                    placeholder="Email" type="text"> </div>
-                <div class="col-12"> <input name="subject"
-                    placeholder="Subject" type="text"> </div>
-                <div class="col-12"> <textarea name="message" placeholder="Message" rows="6"></textarea>
-                </div>
-                <div class="col-12"> <input value="Send Message" type="submit">
-                </div>
-              </div>
-            </div>
-          </form>
-        </article>
-      
-        -->
-        </div>
-    <!-- Footer -->
-        <div id="footer">
-            <ul class="copyright">
-                <li>&copy; Alec Thomson (2019).</li>
-            </ul>
-        </div>
+      </div>
+      <!-- Footer -->
+      <div id="footer">
+        <ul class="copyright">
+          <li>&copy; Alec Thomson (2019).</li>
+        </ul>
+      </div>
+    </div>
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script defer src="assets/js/main.vanilla.js"></script>
   </body>
 </html>
