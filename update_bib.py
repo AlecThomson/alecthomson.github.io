@@ -16,6 +16,7 @@ def main():
     results = requests.get(
         "https://api.adsabs.harvard.edu/v1/search/query?{}".format(encoded_query),
         headers={"Authorization": "Bearer " + token},
+        timeout=60,
     )
 
     # format the response in a nicely readable format
@@ -37,6 +38,7 @@ def main():
         "https://api.adsabs.harvard.edu/v1/export/bibtex",
         headers={"Authorization": "Bearer " + token},
         data=serialized_payload,
+        timeout=60,
     )
     with open("publications.bib", "w") as f:
         f.write(results.json()["export"])
