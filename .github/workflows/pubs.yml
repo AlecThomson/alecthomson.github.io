@@ -9,7 +9,7 @@ jobs:
     env: 
       ADS_TOKEN: ${{ secrets.ADS_KEY }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Query ADS
       run: ./update_bib.py
     - name: switching from HTTPS to SSH
