@@ -5,6 +5,8 @@
 	var navLinks = Array.from(document.querySelectorAll('#nav a'));
 
 	body.classList.remove('is-preload');
+	var cy = document.getElementById('copyright-year');
+	if (cy) cy.textContent = new Date().getFullYear();
 
 	navLinks.forEach(function (link) {
 		link.addEventListener('click', function (event) {
