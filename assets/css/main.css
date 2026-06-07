@@ -1329,7 +1329,7 @@ input, select, textarea {
 		}
 
 	body, input, textarea, select {
-		font-family: 'Source Sans Pro', sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 		font-weight: 300;
 		color: #777777;
 		font-size: 20pt;
@@ -1899,15 +1899,7 @@ input, select, textarea {
 		-webkit-justify-content: center;
 		-ms-justify-content: center;
 		justify-content: center;
-		-moz-transition: opacity 1s ease-in-out;
-		-webkit-transition: opacity 1s ease-in-out;
-		-ms-transition: opacity 1s ease-in-out;
-		transition: opacity 1s ease-in-out;
 	}
-
-		body.is-preload #wrapper {
-			opacity: 0;
-		}
 
 		@media screen and (max-width: 1280px) {
 
@@ -1953,17 +1945,11 @@ input, select, textarea {
 		width: 100%;
 		background: #ffffff;
 		box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
-		-moz-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
-		-webkit-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
-		-ms-transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
-		transition: min-height 0.5s ease-in-out, max-height 0.5s ease-in-out;
+		transition: none;
 	}
 
 		#main > .panel {
-			-moz-transition: opacity 0.25s ease-in-out;
-			-webkit-transition: opacity 0.25s ease-in-out;
-			-ms-transition: opacity 0.25s ease-in-out;
-			transition: opacity 0.25s ease-in-out;
+			transition: opacity 0.15s ease-in-out;
 			margin-bottom: 0;
 			position: relative;
 			padding: 3.5em 2.5em 2.5em 2.5em;
@@ -2193,3 +2179,56 @@ input, select, textarea {
 			}
 
 		}
+
+/* Publications */
+
+	.pub-list { margin: 0; }
+
+	.pub-year-heading {
+		font-size: 1em;
+		font-weight: 600;
+		color: #999;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		margin: 2em 0 0.5em;
+		padding-bottom: 0.4em;
+		border-bottom: 1px solid #eee;
+	}
+
+	.pub-year-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.pub-entry {
+		padding: 0.6em 0;
+		border-bottom: 1px solid #f4f4f4;
+	}
+
+	.pub-entry:last-child { border-bottom: none; }
+
+	a.pub-title {
+		display: block;
+		color: #363636;
+		font-weight: 400;
+		text-decoration: none;
+		line-height: 1.45;
+	}
+
+	a.pub-title:hover { color: #555; text-decoration: underline; }
+
+	span.pub-title {
+		display: block;
+		color: #363636;
+		line-height: 1.45;
+	}
+
+	.pub-meta {
+		font-size: 0.85em;
+		color: #999;
+		margin: 0.2em 0 0;
+		line-height: 1.4;
+	}
+
+	.pub-meta strong { color: #555; font-weight: 600; }
