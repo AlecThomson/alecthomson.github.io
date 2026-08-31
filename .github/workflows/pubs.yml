@@ -3,31 +3,76 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
+
+# The default GITHUB_TOKEN needs write access to push the refreshed bib.
+permissions:
+  contents: write
+
+# Never let a slow run overlap with the next scheduled one.
+concurrency:
+  group: update-publications
+  cancel-in-progress: false
+
 jobs:
   query_ads:
     runs-on: ubuntu-latest
-    env: 
+    timeout-minutes: 15
+    env:
       ADS_TOKEN: ${{ secrets.ADS_KEY }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
+
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install dependencies
+      run: pip install "requests~=2.32" "urllib3~=2.0"
+
     - name: Query ADS
       run: ./update_bib.py
-    - name: switching from HTTPS to SSH
-      run: git remote set-url --add origin ${{ secrets.SSH }}
-    - name: configure git email
-      run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
-    - name: configure git username
-      run: git config --global user.name "github-actions[bot]"
-    - name: check for changes
-      run: git status
-    - name: stage changed files
-      run: git add .
-    - name: Commit changes if any and push
+
+    - name: Commit and push any changes
       run: |
-        if [[ -n "$(git status --porcelain)" ]]; then
-          git commit -m "Auto updating publications.bib"
-          git fetch origin master
-          git push origin HEAD:master
-        else
+        set -euo pipefail
+
+        if [[ -z "$(git status --porcelain publications.bib)" ]]; then
           echo "No changes to commit"
+          exit 0
         fi
+
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
+
+        # publications.bib is regenerated in full from ADS on every run, so the
+        # copy we just built always supersedes whatever is on the remote. Keep
+        # it aside and rebuild the commit from a pristine master on each try:
+        # that way a push that races with another commit simply retries instead
+        # of landing in a conflicted rebase.
+        generated="${RUNNER_TEMP:-/tmp}/publications.bib"
+        cp publications.bib "$generated"
+
+        for attempt in 1 2 3; do
+          git fetch origin master
+          git reset --hard FETCH_HEAD
+          cp "$generated" publications.bib
+
+          if [[ -z "$(git status --porcelain publications.bib)" ]]; then
+            echo "publications.bib is already up to date on master"
+            exit 0
+          fi
+
+          git add publications.bib
+          git commit -m "Auto updating publications.bib"
+
+          if git push origin HEAD:master; then
+            echo "Pushed on attempt ${attempt}"
+            exit 0
+          fi
+
+          echo "Push failed on attempt ${attempt}; retrying against latest master"
+          sleep $((attempt * 5))
+        done
+
+        echo "::error::Could not push after 3 attempts"
+        exit 1
